@@ -19,9 +19,14 @@ module.exports = function(sequelize, DataTypes) {
         },
         email: {
             type: DataTypes.CHAR,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         avatar_url:{
+            type:DataTypes.CHAR,
+            allowNull:true
+        },
+        cover_url:{
             type:DataTypes.CHAR,
             allowNull:true
         },
@@ -35,7 +40,18 @@ module.exports = function(sequelize, DataTypes) {
         },
         last_name:{
             type:DataTypes.CHAR,
-        }
+        },
+        date_of_birth:{
+            type:DataTypes.DATE
+        },
+        reset_id:{
+            type:DataTypes.CHAR,
+            allowNull:true
+        },
+        confirmed: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
 
     }, {
         tableName: 'users'

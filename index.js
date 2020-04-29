@@ -18,6 +18,9 @@ app.use(cors(corsOptions));
 //Parsiranje podataka sa Front End-a
 app.use(bodyParser.json());
 
+//Koriscenje Multera za slike
+app.use('/images', express.static('images'))
+
 //Slusanje aplikacije
 app.listen(port, ()=>{ console.log(`Express Server is running at port Number:${port}`)});
 
@@ -25,6 +28,7 @@ app.listen(port, ()=>{ console.log(`Express Server is running at port Number:${p
 app.use('', postRoutes);
 app.use('', commentRoutes);
 app.use('', userRoutes);
+
 
 
 
