@@ -1,5 +1,6 @@
 const DataBaseModels = require('../models/models');
 const jwtDecoder = require('jwt-decode');
+const fs = require('fs');
 
 ////////////////////////////////////////////////////////////////////PRIVATE FUNCTION////////////////////////////////////////////////////////////////////////
 const TokenDecoder = (token) => {
@@ -74,17 +75,20 @@ module.exports.GetSinglePostByID = (req, res) => {
 module.exports.CreatePost = (req, res) => {
     const token = req.headers.authorization.slice(6);
     const user_id = TokenDecoder(token);
-    const {text, type} = req.body;
-    let video_url = '';
+    let type = 'text';
+    const {text} = req.body;
+    let video_url = null;
     let images = [];
-    let image_url;
+    let image_url = null;
     if (req.files.image_url !== undefined) {
         req.files.image_url.forEach(el => {
-            images.push('http://localhost:3000/' + el.path)
+            images.push('' + el.path)
         })
+        type = 'image'
     }
     if (req.files.video_url !== undefined) {
-        video_url = 'http://localhost:3000/' + req.files.video_url[0].path;
+        video_url = '' + req.files.video_url[0].path;
+        type = 'video'
     }
     image_url = images.toString()
     DataBaseModels.posts.create({
@@ -107,36 +111,72 @@ module.exports.CreatePost = (req, res) => {
 };
 
 
-
 //////////////////////////////////////////////////////////////////UPDATE POST/////////////////////////////////////////////////////////////////////////////////
 module.exports.UpdatePostByID = (req, res) => {
     const post_id = req.params.id;
-    const update= req.body;
+    const update = req.body;
+    let images = [];
+    update.type = 'text';
 
-    DataBaseModels.posts.update(update, {
+    DataBaseModels.posts.findOne({
         where: {
             post_id
         }
-    })
-        .then(
-            updateResult => {
-
-                if (!updateResult) {
-                    return res.status(404).json({
-                        message: 'No Update.'
-                    })
+    }).then(
+        searchResult => {
+            let videoFile = searchResult.dataValues.video_url;
+            let imageFiles = searchResult.dataValues.image_url;
+            if (req.files.video_url !== undefined) {
+                if (videoFile !== null) {
+                    fs.unlinkSync(videoFile);
                 }
-                return res.status(200).json(updateResult)
+                update.video_url = '' + req.files.video_url[0].path;
+                update.type = 'video';
             }
-        )
-        .catch(error => {
-            return res.status(400).json(error.toString())
-        })
+            if (req.files.image_url !== undefined) {
+                if (imageFiles !== '') {
+                    let imageArray = imageFiles.split(',');
+                    imageArray.forEach(el => {
+                        fs.unlinkSync(el)
+                    });
+                }
+                req.files.image_url.forEach(el => {
+                    images.push('' + el.path)
+                });
+                update.type = 'image'
+            }
+            update.image_url = images.toString();
+
+            DataBaseModels.posts.update(update, {
+                where: {
+                    post_id
+                }
+            })
+                .then(
+                    updateResult => {
+
+                        if (!updateResult) {
+                            return res.status(404).json({
+                                message: 'No Update.'
+                            })
+                        }
+                        return res.status(200).json(updateResult)
+                    }
+                )
+                .catch(error => {
+                    return res.status(400).json(error.toString())
+                })
+        }
+    ).catch(error => {
+        console.log(error)
+        return res.status(400).json(error.toString())
+    })
+
 };
 //////////////////////////////////////////////////////////////LIKE AND DISLIKE/////////////////////////////////////////////////////////////////////////////////////////
 module.exports.LikeAndDislike = (req, res) => {
-    const {status} = req.body;
-    const post_id = req.params.id;
+    const {status, post_id} = req.body;
+d;
 
     DataBaseModels.posts.findOne({
         where: {

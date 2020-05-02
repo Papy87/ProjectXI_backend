@@ -287,7 +287,6 @@ module.exports.ForgotPassword = (req, res) => {
 
     const email = req.body.email;
     const reset_id = uuidv5();
-    const body = req.body;
     DataBaseModels.users.findOne({
         where: {email}
     })
