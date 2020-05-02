@@ -1,7 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de678953-351f-4921-aff2-887758db9bf8" name="Default Changelist" comment="" />
+    <list default="true" id="de678953-351f-4921-aff2-887758db9bf8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/auth/delete_post_comment_auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth/token_auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/post_file_middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588347819538 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588347819540 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588354613454 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588354613456 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588355888087 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588355888089 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356088124 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356088127 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356481440 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356481442 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356539147 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356539150 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356559574 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356559576 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356682528 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356682531 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356770614 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356770616 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356790234 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356790236 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356873739 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356873741 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356888004 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356888007 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356945957 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356945960 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356964502 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588356964505 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588358493385 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588358493388 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588358548546 - Cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/image_post/1588358548548 - Profil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/video_post/1588347938469 - Horses_2.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/auth/forgote_mail_auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/resetRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/auth/reset_requests_auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/sendEmail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/CommentsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CommentsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/PostsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PostsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UsersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/image_upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/profile_images_upload_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/comments.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/comments.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/posts.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.route.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,16 +76,18 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/auth" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/PinkBackend/PinkHR_backend" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Nemanja\WebstormProjects\ProjectXI\auth" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nemanja\WebstormProjects\ProjectXI" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nemanja\WebstormProjects\ProjectXI\posts" />
+      <recent name="C:\Users\Nemanja\WebstormProjects\ProjectXI\post" />
+      <recent name="C:\Users\Nemanja\WebstormProjects\ProjectXI\auth" />
       <recent name="C:\Users\Nemanja\WebstormProjects\ProjectXI" />
     </key>
   </component>
@@ -71,7 +126,10 @@
       <workItem from="1587370013268" duration="528000" />
       <workItem from="1588062023611" duration="26021000" />
       <workItem from="1588155572554" duration="3583000" />
-      <workItem from="1588159518667" duration="6233000" />
+      <workItem from="1588159518667" duration="6722000" />
+      <workItem from="1588328327823" duration="22851000" />
+      <workItem from="1588357205679" duration="1409000" />
+      <workItem from="1588413263038" duration="14553000" />
     </task>
     <task id="LOCAL-00001" summary="Added multer middlewear for upload images, auth for sending email if user forgat password and auth for email conformation.">
       <created>1588165691283</created>
@@ -80,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588165691283</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added multer middlewear for upload images, auth for sending email if user forgat password and auth for email conformation.">
+      <created>1588166167456</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588166167456</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

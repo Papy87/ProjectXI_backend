@@ -1,11 +1,37 @@
 const DataBaseModels = require('../models/models');
+const jwtDecoder = require('jwt-decode');
 
-//GET metode
+////////////////////////////////////////////////////////////////////PRIVATE FUNCTION////////////////////////////////////////////////////////////////////////
+const TokenDecoder = (token) => {
+    const decodedToken = jwtDecoder(token);
+    return decodedToken.id
+}
+
+///////////////////////////////////////////////////////////////////GET ALL POSTS///////////////////////////////////////////////////////////////////////////////////////
 module.exports.GetAllPosts = (req, res) => {
-    DataBaseModels.posts.findAndCountAll()
+    let offset = 0;
+    let limit = 5;
+    let where = {};
+    if (req.query.page !== undefined && req.query.pageSize !== undefined) {
+        offset = parseInt(req.query.page) * parseInt(req.query.pageSize);
+        limit = parseInt(req.query.pageSize);
+    }
+    if (req.query.type !== undefined) {
+        where = {
+            type: req.query.type
+        }
+    }
+
+    DataBaseModels.posts.findAndCountAll({
+        where,
+        include: [
+            {model: DataBaseModels.comments}
+        ],
+        offset,
+        limit
+    })
         .then(
             searchResult => {
-
                 if (!searchResult.rows.length) {
                     return res.status(404).json({
                         message: 'No Result.'
@@ -19,16 +45,18 @@ module.exports.GetAllPosts = (req, res) => {
         }
     )
 };
-
+///////////////////////////////////////////////////////////////////GET SINGLE POST/////////////////////////////////////////////////////////////////////////////////////////
 module.exports.GetSinglePostByID = (req, res) => {
     const post_id = req.params.id;
     DataBaseModels.posts.findOne({
         where: {
             post_id
-        }
+        },
+        include: [
+            {model: DataBaseModels.comments}
+        ]
     }).then(
         searchResult => {
-
             if (!searchResult) {
                 return res.status(404).json({
                     message: 'No Result.'
@@ -42,24 +70,35 @@ module.exports.GetSinglePostByID = (req, res) => {
         })
 };
 
-module.exports.GetAllPostComments=(req,res)=>{
-    const post_id=req.params.id;
-    DataBaseModels.posts.findOne({
-        where:{
-            post_id
-        },
-        include:[
-            {model:DataBaseModels.comments}
-        ]
+//////////////////////////////////////////////////////////////////CREATE POST//////////////////////////////////////////////////////////////////////////////////////////////////////
+module.exports.CreatePost = (req, res) => {
+    const token = req.headers.authorization.slice(6);
+    const user_id = TokenDecoder(token);
+    const {text, type} = req.body;
+    let video_url = '';
+    let images = [];
+    let image_url;
+    if (req.files.image_url !== undefined) {
+        req.files.image_url.forEach(el => {
+            images.push('http://localhost:3000/' + el.path)
+        })
+    }
+    if (req.files.video_url !== undefined) {
+        video_url = 'http://localhost:3000/' + req.files.video_url[0].path;
+    }
+    image_url = images.toString()
+    DataBaseModels.posts.create({
+        type, user_id, text, image_url, video_url
     })
         .then(
-            searchResult=>{
-                if(!searchResult){
-                    return res.status(400).json({
-                        message:'No results.'
+            createResutl => {
+
+                if (!createResutl) {
+                    return res.status(404).json({
+                        message: 'Post not created.'
                     })
                 }
-                res.status(200).json(searchResult)
+                return res.status(200).json(createResutl)
             }
         )
         .catch(error => {
@@ -67,10 +106,14 @@ module.exports.GetAllPostComments=(req,res)=>{
         })
 };
 
-//PUT metode
+
+
+//////////////////////////////////////////////////////////////////UPDATE POST/////////////////////////////////////////////////////////////////////////////////
 module.exports.UpdatePostByID = (req, res) => {
     const post_id = req.params.id;
-    DataBaseModels.posts.update(req.body, {
+    const update= req.body;
+
+    DataBaseModels.posts.update(update, {
         where: {
             post_id
         }
@@ -90,45 +133,120 @@ module.exports.UpdatePostByID = (req, res) => {
             return res.status(400).json(error.toString())
         })
 };
-
-//DELETE metode
-module.exports.DeletePostByID = (req, res) => {
+//////////////////////////////////////////////////////////////LIKE AND DISLIKE/////////////////////////////////////////////////////////////////////////////////////////
+module.exports.LikeAndDislike = (req, res) => {
+    const {status} = req.body;
     const post_id = req.params.id;
-    DataBaseModels.posts.destroy({
+
+    DataBaseModels.posts.findOne({
+        where: {
+            post_id
+        }
+    }).then(
+        searchData => {
+            if (!searchData) {
+                return res.status(400).json({message: `No post wiht id ${post_id}`})
+            }
+            let like_count;
+            if (status) {
+                like_count = parseInt(searchData.dataValues.like_count + 1);
+            } else if (!status) {
+                like_count = parseInt(searchData.dataValues.like_count - 1);
+            }
+            DataBaseModels.posts.update({like_count},
+                {
+                    where: {
+                        post_id
+                    }
+                }
+            )
+                .then(postUpdated => {
+                        if (!postUpdated) {
+                            return res.status(404).json({
+                                message: 'Something went wrong.'
+                            })
+                        }
+                        return res.status(200).json({
+                            message: postUpdated
+                        })
+                    }
+                )
+                .catch(error => {
+                    return res.status(400).json({message: error.toString()})
+                })
+        }
+    ).catch(error => {
+        return res.status(401).json(error.toString())
+    })
+}
+
+/////////////////////////////////////////////////////////////////////////////DELETE POST///////////////////////////////////////////////////////////////////////////////
+module.exports.DeletePostByID = (req, res) => {
+    const {post_id} = req.body;
+
+    DataBaseModels.comments.findAll({
         where: {
             post_id
         }
     })
         .then(
-            deleteResult => {
-
-                if (!deleteResult) {
-                    return res.status(404).json({
-                        message: 'No Delete.'
+            srcComm => {
+                if (!srcComm.length) {
+                    DataBaseModels.posts.destroy({
+                        where: {
+                            post_id
+                        }
                     })
-                }
-                return res.status(200).json(deleteResult)
-            }
-        )
-        .catch(error => {
-            return res.status(400).json(error.toString())
-        })
-};
-//POST metode
-module.exports.CreatePost = (req, res) => {
-    const {type, user_id, text, image_url, video_url} = req.body;
-    DataBaseModels.posts.create({
-        type,user_id,text,image_url,video_url
-    })
-        .then(
-            createResutl => {
+                        .then(
+                            deleteResult => {
+                                if (!deleteResult) {
+                                    return res.status(404).json({
+                                        message: 'No Delete.'
+                                    })
+                                }
+                                return res.status(200).json(deleteResult)
+                            }
+                        )
+                        .catch(error => {
+                            return res.status(400).json(error.toString())
+                        })
 
-                if (!createResutl) {
-                    return res.status(404).json({
-                        message: 'Post not created.'
-                    })
                 }
-                return res.status(200).json(createResutl)
+                DataBaseModels.comments.destroy({
+                    where: {
+                        post_id
+                    }
+                }).then(
+                    destroyedPost => {
+                        if (!destroyedPost) {
+                            return res.status(404).json({
+                                message: 'Comment not found.'
+                            })
+                        }
+                        DataBaseModels.posts.destroy({
+                            where: {
+                                post_id
+                            }
+                        })
+                            .then(
+                                deleteResult => {
+
+                                    if (!deleteResult) {
+                                        return res.status(404).json({
+                                            message: 'No Delete.'
+                                        })
+                                    }
+                                    return res.status(200).json(deleteResult)
+                                }
+                            )
+                            .catch(error => {
+                                return res.status(400).json(error.toString())
+                            })
+                    }
+                )
+                    .catch(error => {
+                        return res.status(400).json(error.toString())
+                    })
             }
         )
         .catch(error => {

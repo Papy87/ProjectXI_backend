@@ -1,7 +1,12 @@
 const DataBaseModels = require('../models/models');
-//POST metod
+const jwt=require('jwt-decode');
+
+/////////////////////////////////////////////////////////////////////POST COMMENT////////////////////////////////////////////////////////////////////
 module.exports.CreateComment = (req, res) => {
-    const {comment_body, post_id, user_id} = req.body;
+    const token=jwt(req.headers.authorization.slice(7));
+    const user_id=token.id;
+    const {comment_body, post_id} = req.body;
+
     DataBaseModels.comments.create({
         comment_body, post_id, user_id
     })
@@ -17,14 +22,14 @@ module.exports.CreateComment = (req, res) => {
         )
         .catch(
             error => {
-                return res.status(400).json(error.toString())
+                return res.status(400).json({message:error.toString()})
             }
         )
 };
-//PUT metod
+//////////////////////////////////////////////////////////////////////////UPDATE COMMENT/////////////////////////////////////////////////////////////////////////////////////
 module.exports.UpdateComment = (req, res) => {
-    const comment_id = req.params.id;
-    DataBaseModels.comments.update(req.body, {
+    const {comment_id, comment_body} = req.body;
+    DataBaseModels.comments.update({comment_body}, {
         where: {
             comment_id
         }
@@ -42,13 +47,14 @@ module.exports.UpdateComment = (req, res) => {
         )
         .catch(
             error => {
-                return res.status(400).json(error.toString())
+                return res.status(400).json({message:error.toString()})
             }
         )
 };
-//DELETE metod
+////////////////////////////////////////////////////////////////////////////////DELETE COMMENT////////////////////////////////////////////////////////////////////////////////
 module.exports.DeleteComment = (req, res) => {
-    const comment_id = req.params.id;
+    const {comment_id} = req.body;
+
     DataBaseModels.comments.destroy( {
         where: {
             comment_id
@@ -66,7 +72,7 @@ module.exports.DeleteComment = (req, res) => {
         )
         .catch(
             error => {
-                return res.status(400).json(error.toString())
+                return res.status(400).json({message:error.toString()})
             }
         )
 };
