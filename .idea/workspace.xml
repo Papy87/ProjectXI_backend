@@ -1,45 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de678953-351f-4921-aff2-887758db9bf8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/PostsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PostsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UsersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588347819538 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588347819540 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588354613454 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588354613456 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588355888087 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588355888089 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356088124 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356088127 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356481440 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356481442 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356539147 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356539150 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356559574 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356559576 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356682528 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356682531 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356770614 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356770616 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356790234 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356790236 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356873739 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356873741 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356888004 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356888007 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356945957 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356945960 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356964502 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588356964505 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588358493385 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588358493388 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588358548546 - Cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/image_post/1588358548548 - Profil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/video_post/1588347938469 - Horses_2.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/posts.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.route.js" afterDir="false" />
-    </list>
+    <list default="true" id="de678953-351f-4921-aff2-887758db9bf8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +76,7 @@
       <workItem from="1588159518667" duration="6722000" />
       <workItem from="1588328327823" duration="22851000" />
       <workItem from="1588357205679" duration="1409000" />
-      <workItem from="1588413263038" duration="25235000" />
+      <workItem from="1588413263038" duration="25507000" />
     </task>
     <task id="LOCAL-00001" summary="Added multer middlewear for upload images, auth for sending email if user forgat password and auth for email conformation.">
       <created>1588165691283</created>
@@ -144,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588428956738</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update post changed. Now we delete old images and videos from server.">
+      <created>1588441188137</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588441188137</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +136,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added multer middlewear for upload images, auth for sending email if user forgat password and auth for email conformation." />
     <MESSAGE value="Added token auth delet post auth and mada some changes on routes and contorllers. Added some new routes and new functions deleted some routes and functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added token auth delet post auth and mada some changes on routes and contorllers. Added some new routes and new functions deleted some routes and functions" />
+    <MESSAGE value="Update post changed. Now we delete old images and videos from server." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update post changed. Now we delete old images and videos from server." />
   </component>
 </project>
